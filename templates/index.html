@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>password_gen</title>
+    <link rel="stylesheet" href="static/assets/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body style="margin: 0px;color: var(--bs-blue);background: var(--bs-gray-800);">
+    <section class="py-4 py-xl-5">
+        <div class="container">
+            <div class="text-white bg-dark border rounded border-0 p-4 p-md-5">
+                <h2 class="fw-bold text-white mb-3" style="text-align: center;padding: 1.5rem;background: var(--bs-blue);border-radius: 1rem;">Password Generator</h2>
+                <form name="myform" method="POST">
+                <div class="d-lg-flex justify-content-lg-center"><label class="form-label" style="font-size: 1.5rem;margin-top: 1rem;">Password Size&nbsp; &nbsp;</label><input type="text" name='size' style="width: 120px;height: 39px;margin-top: 1rem;" placeholder="Default=8"></div>
+                <div class="form-check d-lg-flex justify-content-lg-center" style="margin-top: 14px;"><input class="form-check-input" name="options" type="checkbox" id="formCheck-1" value="1" checked><label class="form-check-label" for="formCheck-1" style="font-size: 1.5rem;">&nbsp;Include Special Characters</label></div>
+                <div class="form-check d-lg-flex justify-content-lg-center"><input class="form-check-input" name="options" type="checkbox" id="formCheck-2" value="2" checked><label class="form-check-label" for="formCheck-2" style="font-size: 1.5rem;">&nbsp;Include numbers</label></div>
+                <div class="my-3" style="text-align: center;"><button class="btn btn-primary btn-lg me-2" type="submit">Submit</button></div>
+                </form>
+                {% if gen %}
+                <h1 id="passwrd" style="text-align: center;background: var(--bs-gray-100);color: var(--bs-body-color);padding: 0.5rem;margin-top: 3rem;">{{ gen }}</h1>
+                <div class="my-3" style="text-align: center;"><button class="btn btn-primary btn-lg me-2" type="button" onclick="copy()">Copy</button></div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <script>
+        function copy() {
+        // Copy the text inside the text field
+        navigator.clipboard.writeText('{{ gen }}');
+        // Alert the copied text
+        alert("Copied: " + '{{ gen }}');
+        }
+    </script>
+    <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
